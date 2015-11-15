@@ -27,48 +27,10 @@ class Conjur::Command::Enterprise < Conjur::Command
   and processes in untrusted environments
   DESC
 
-  arg :url
   command :enterprise do |c|
-    c.flag :p, :port,
-        desc: "port to bind to",
-        default_value: 8080,
-        type: Integer
-
-    c.flag :a, :address,
-        desc: "address to bind to",
-        default_value: "127.0.0.1"
-
-    c.switch :k,
-        desc: "Don't verificate HTTPS certificate"
-
-    c.flag :cacert,
-        desc: "Verify SSL using the provided cert file"
-
-    c.action do |global_options, options, args|
-      url = args.shift or help_now!("missing URL")
-
-      if options[:k]
-        options[:insecure] = true
-      end
-
-      unless url.start_with?('http://') || url.start_with?('https://')
-        url = url.gsub(/^(.+?\:(\/)?(\/)?)?/, 'https://')
-      end
-
-      require 'uri'
-
-      uri = URI.parse(url)
-      uri.path = ''
-      uri.query = nil
-
-      url = uri.to_s
-
-      options.slice! :port, :address, :insecure, :cacert
-      options.delete :port unless options[:port].respond_to? :to_i
-
-      require 'conjur/enterprise'
-
-      Conjur::Enterprise.new(url, api).start options
-    end
+	command :client-secret do |s|
+		command :generate do |g|
+		end
+	end
   end
 end
