@@ -24,7 +24,7 @@ require 'rack/streaming_proxy'
 require 'unicorn-rails'
 
 module Conjur
-  class Proxy
+  class Enterprise 
     def initialize url, conjur
       @conjur = conjur
       @proxy = Rack::StreamingProxy::Proxy.new nil do |request|

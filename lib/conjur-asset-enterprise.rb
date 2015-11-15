@@ -19,4 +19,4 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-require 'conjur/asset/proxy/version'
+require 'conjur/asset/enterprise/version'

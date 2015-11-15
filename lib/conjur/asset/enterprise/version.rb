@@ -20,8 +20,8 @@
 #
 module Conjur
   module Asset
-    module Proxy
-      VERSION = "0.5.2"
+    module Enterprise 
+      VERSION = "0.0.2"
     end
   end
 end

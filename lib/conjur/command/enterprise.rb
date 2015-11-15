@@ -19,17 +19,16 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-class Conjur::Command::Proxy < Conjur::Command
-  desc "Proxy to a protected HTTP service"
+class Conjur::Command::Enterprise < Conjur::Command
+  desc "Enterprise Security Services for Conjur"
   long_desc <<-DESC
-Launch an HTTP proxy to a Conjur-protected service. The proxy adds a Conjur
-authorization header to every request. This allows eg. using browser to access
-a UI of a Conjur-protected web application. The proxy will keep running until
-terminated.
+  Enterprise Security Services for Conjur provide additional
+  levels of security for establishing the identity of machines
+  and processes in untrusted environments
   DESC
 
   arg :url
-  command :proxy do |c|
+  command :enterprise do |c|
     c.flag :p, :port,
         desc: "port to bind to",
         default_value: 8080,
@@ -67,9 +66,9 @@ terminated.
       options.slice! :port, :address, :insecure, :cacert
       options.delete :port unless options[:port].respond_to? :to_i
 
-      require 'conjur/proxy'
+      require 'conjur/enterprise'
 
-      Conjur::Proxy.new(url, api).start options
+      Conjur::Enterprise.new(url, api).start options
     end
   end
 end
