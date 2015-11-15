@@ -20,17 +20,32 @@
 #
 
 class Conjur::Command::Enterprise < Conjur::Command
-  desc "Enterprise Security Services for Conjur"
+  desc "Manage Enteprise Services"
   long_desc <<-DESC
   Enterprise Security Services for Conjur provide additional
   levels of security for establishing the identity of machines
   and processes in untrusted environments
   DESC
 
-  command :enterprise do |c|
-	command :client-secret do |s|
-		command :generate do |g|
+  command :enterprise do |e|
+    e.desc "Manage client secrets"
+    e.command :client_secret do |s|
+        
+	s.desc "Generate a client secret"
+	s.command :generate do |g|
+
+		g.switch :h,
+			desc: "Include the hostname in the secret"
+
+		g.action do |global_options,options,args|
+		   if options[:h]
+			print "Including host\n"
+		   else
+			print "No Host\n"
+		   end
+
 		end
 	end
+    end
   end
 end
