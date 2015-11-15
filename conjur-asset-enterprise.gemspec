@@ -1,15 +1,15 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'conjur/asset/proxy/version'
+require 'conjur/asset/enterprise/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "conjur-asset-proxy"
-  spec.version       = Conjur::Asset::Proxy::VERSION
-  spec.authors       = ["Rafał Rzepecki", "Mikalai Sevastsyanau"]
-  spec.email         = ["rafal@conjur.net", "mikalai@conjur.net"]
-  spec.summary       = %q{Simple HTTP proxy which adds Conjur authentication headers}
-  spec.homepage      = "https://github.com/conjurinc/conjur-asset-proxy"
+  spec.name          = "conjur-asset-enterprise"
+  spec.version       = Conjur::Asset::Enterprise::VERSION
+  spec.authors       = ["Josh Bregman"]
+  spec.email         = ["josh.bregman@conjur.net"]
+  spec.summary       = %q{Plugin to support enterprise conjur features}
+  spec.homepage      = "https://github.com/jbregman/conjur-enterprise-plugin"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
